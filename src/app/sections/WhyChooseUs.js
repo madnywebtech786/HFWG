@@ -2,9 +2,9 @@ import Image from "next/image";
 
 const WhyChooseUs = () => {
   return (
-    <div className="flex flex-col md:flex-row  w-full  text-primary py-10 p-4 lg:p-0">
+    <div className="flex flex-col lg:flex-row  w-full  text-primary py-10 p-4 lg:p-0">
       {/* Left Side - Image */}
-      <div className="w-full md:w-1/2 relative featureSide">
+      <div className="w-full lg:w-1/2 relative featureSide">
         <Image
           loading="lazy"
           src="/images/Aboutimg.png"
@@ -16,7 +16,7 @@ const WhyChooseUs = () => {
       </div>
 
       {/* Right Side - Content */}
-      <div className="w-full md:w-1/2 p-4 lg:p-10 py-20">
+      <div className="w-full lg:w-1/2 p-4 lg:p-10 py-20">
         <h2 className="text-3xl lg:text-4xl font-bold mb-10 flex items-center gap-2 text-primary">
           <div className="w-10 h-0.5 bg-primary"></div>
           Why Choose Us

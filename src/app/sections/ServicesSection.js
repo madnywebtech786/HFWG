@@ -6,6 +6,7 @@ const services = [
   {
     id: 1,
     title: "Staffing Services",
+    path: "/services/staffing-services",
     description:
       "Comprehensive staffing solutions connecting qualified healthcare professionals to facilities for efficient and reliable workforce support.",
     image: "/images/Aboutimg.png",
@@ -13,6 +14,7 @@ const services = [
   {
     id: 2,
     title: "Registered Nurses (RNs)",
+    path: "/services/registered-nurses",
     description:
       "Highly skilled Registered Nurses delivering expert patient care, clinical assessment, and health management in diverse medical settings.",
     image: "/images/Aboutimg.png",
@@ -20,6 +22,7 @@ const services = [
   {
     id: 3,
     title: "Licensed Practical Nurses (LPNs)",
+    path: "/services/licensed-practical-nurses",
     description:
       "Certified Licensed Practical Nurses providing compassionate bedside care, medication administration, and patient support under RN supervision.",
     image: "/images/Aboutimg.png",
@@ -27,6 +30,7 @@ const services = [
   {
     id: 4,
     title: "Certified Nursing Assistants (CNAs)",
+    path: "/services/certified-nursing-assistants",
     description:
       "Dedicated CNAs offering personal care assistance, vital sign monitoring, and support for activities of daily living.",
     image: "/images/Aboutimg.png",
@@ -34,6 +38,7 @@ const services = [
   {
     id: 5,
     title: "Health Care Aides (HCAs)",
+    path: "/services/health-care-aides",
     description:
       "Professional HCAs assisting with patient mobility, hygiene, and comfort to enhance quality of life in care environments.",
     image: "/images/Aboutimg.png",
@@ -41,6 +46,7 @@ const services = [
   {
     id: 6,
     title: "Personal Support Workers (PSW)",
+    path: "/services/personal-support-workers",
     description:
       "Compassionate PSWs offering daily living assistance, companionship, and emotional support tailored to each patient’s needs.",
     image: "/images/Aboutimg.png",
@@ -48,6 +54,7 @@ const services = [
   {
     id: 7,
     title: "Specialized Care Providers",
+    path: "/services/specialized-care-providers",
     description:
       "Expert specialized care providers delivering tailored treatment for complex conditions such as wound care and IV therapy.",
     image: "/images/Aboutimg.png",
@@ -55,6 +62,7 @@ const services = [
   {
     id: 8,
     title: "General Labourers",
+    path: "/services/general-labourers",
     description:
       "Reliable general labourers skilled in facility maintenance, cleaning, and logistical support to ensure smooth operations.",
     image: "/images/Aboutimg.png",
@@ -62,12 +70,12 @@ const services = [
   {
     id: 9,
     title: "Cleaners",
+    path: "/services/cleaners",
     description:
       "Professional cleaners dedicated to maintaining hygienic environments through thorough cleaning, sanitization, and infection control practices.",
     image: "/images/Aboutimg.png",
   },
 ];
-
 
 export default function ServicesSection() {
   return (

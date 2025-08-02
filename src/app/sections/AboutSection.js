@@ -13,7 +13,7 @@ export default function AboutSection() {
       <div className="w-full flex flex-col lg:flex-row lg:items-center gap-10">
         <div className="w-full lg:w-[45%]">
           <Image
-            src="/images/Aboutimg.png"
+            src="/images/aboutSide2.png"
             width={400}
             height={400}
             alt="About Image"

@@ -2,6 +2,7 @@
 import Image from "next/image";
 import React, { useState } from "react";
 import { ArrowUpRight } from "lucide-react";
+import Link from "next/link";
 
 export default function ServicesCard({ service }) {
   const [tilt, setTilt] = useState({ x: 0, y: 0 });
@@ -43,11 +44,13 @@ export default function ServicesCard({ service }) {
         {service.title}
       </h3>
       <p className="text-sm px-4 pb-4 text-gray-600">{service.description}</p>
-      <div className="mb-6 flex gap-1 items-center px-5">
-        <p className="py-2 text-primary hover:cursor-pointer rounded-lg">
-          Read More
-        </p>
-        <ArrowUpRight size={20} className="inline" color="green" />
+      <div>
+        <Link href={service.path} className="mb-6 flex gap-1 items-center px-5">
+          <p className="py-2 text-primary hover:cursor-pointer rounded-lg">
+            Read More
+          </p>
+          <ArrowUpRight size={20} className="inline" color="green" />
+        </Link>
       </div>
     </div>
   );

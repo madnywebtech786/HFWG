@@ -39,7 +39,7 @@ export default function ProcessPage() {
       },
    ];
    return (
-      <div className='py-16 px-4 sm:px-8 md:px-12 lg:px-20'>
+      <div className='py-16 px-4 sm:px-8 md:px-12 lg:px-20' id='howWork'>
          <section>
             <div className="text-center mb-16">
                <div className='flex justify-center'>
