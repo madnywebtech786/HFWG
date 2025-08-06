@@ -66,11 +66,7 @@ export default function Navbar() {
     >
       <TopBar isScrolled={isScrolled} />
       <nav
-        className={` w-full flex items-center justify-between px-4 md:px-10 lg:px-20 transition-all duration-500 z-50 ${
-          isScrolled
-            ? "bg-white shadow-md backdrop-blur-lg py-3"
-            : "bg-primary-gradient py-3"
-        }`}
+        className={` w-full flex bg-white py-3 items-center justify-between px-4 md:px-10 lg:px-20 transition-all duration-500 z-50`}
       >
         {/* Logo */}
         <Image
@@ -88,9 +84,7 @@ export default function Navbar() {
               return (
                 <div
                   key={idx}
-                  className={`relative group ${
-                    isScrolled ? "text-primary" : "text-white"
-                  } `}
+                  className={`relative group text-primary `}
                 >
                   <a
                     href={link.path}
@@ -120,7 +114,7 @@ export default function Navbar() {
               <a
                 key={idx}
                 href={link.path}
-                className={`cursor-pointer ${isScrolled ? "text-primary" : ""}`}
+                className={`cursor-pointer text-primary`}
               >
                 {link.name}
               </a>
@@ -132,18 +126,14 @@ export default function Navbar() {
         <div className="hidden lg:flex items-center gap-2">
           <Link href={"/contact"}>
             <button
-              className={`cursor-pointer px-3 py-2 rounded-xl text-sm text-green-700 hover:scale-95 font-semibold transition-all duration-200  ${
-                isScrolled ? "bg-primary-gradient text-white" : "bg-white"
-              }`}
+              className={`cursor-pointer px-3 py-2 rounded-xl text-sm bg-primary-gradient text-white hover:scale-95 font-semibold transition-all duration-200  `}
             >
               Apply Now
             </button>
           </Link>
           <Link href={"/contact?role=employer"}>
             <button
-              className={`cursor-pointer px-3 py-2 rounded-xl text-sm text-green-700 hover:scale-95 font-semibold transition-all duration-200  ${
-                isScrolled ? "bg-primary-gradient text-white" : "bg-white"
-              }`}
+              className={`cursor-pointer px-3 py-2 rounded-xl text-sm bg-primary-gradient text-white hover:scale-95 font-semibold transition-all duration-200  `}
             >
               Hire Now
             </button>
@@ -152,9 +142,7 @@ export default function Navbar() {
 
         {/* Mobile Toggle */}
         <div
-          className={`flex items-center gap-3 lg:hidden ${
-            isScrolled ? "text-primary" : "text-white"
-          } `}
+          className={`flex items-center gap-3 text-primary lg:hidden `}
         >
           <svg
             onClick={() => setIsMenuOpen(!isMenuOpen)}

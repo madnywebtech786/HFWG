@@ -1,7 +1,7 @@
 import { Phone, Mail, Facebook, Instagram, Linkedin } from "lucide-react";
 
-const TopBar = ({isScrolled}) => (
-  <div className={`${isScrolled?"bg-primary-gradient !text-white":"bg-white !text-primary"} backdrop-blur-sm py-2 text-sm border-b border-primary  dark:!text-white`}>
+const TopBar = () => (
+  <div className={`bg-primary-gradient !text-white backdrop-blur-sm py-2 text-sm border-b border-primary  dark:!text-white`}>
     <div className="w-full p-4 md:px-8 lg:px-12 2xl:px-20 flex flex-wrap justify-between items-center">
       <div className="flex space-x-6">
         <a
