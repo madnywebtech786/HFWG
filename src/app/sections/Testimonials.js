@@ -3,8 +3,7 @@ import Image from "next/image";
 import "swiper/css";
 import { Swiper, SwiperSlide } from "swiper/react";
 import { Autoplay } from "swiper/modules";
-import { Aperture } from "lucide-react";
-
+import { Aperture, Star, User, Quote } from "lucide-react";
 const testimonials = [
   { name: "Donald Jackman", role: "Content Creator" },
   { name: "Richard Nelson", role: "Instagram Influencer" },
@@ -14,7 +13,67 @@ const testimonials = [
   { name: "Sophia Blake", role: "Social Media Manager" },
 ];
 
+function TestimonialCard({ name, location, quote }) {
+  // derive initials
+  const initials = name
+    .split(" ")
+    .map((word) => word[0])
+    .join("")
+    .slice(0, 2)
+    .toUpperCase();
+
+  return (
+    <div className="relative bg-white rounded-2xl shadow-xl p-6 hover:shadow-2xl transition-shadow duration-300 flex flex-col h-full">
+      <Quote className="absolute -top-3 -left-3 w-8 h-8 text-primary" />
+
+      <div className="flex items-center mb-4 space-x-4">
+        <div className="w-12 h-12 rounded-full bg-primary/20 flex items-center justify-center text-primary font-bold">
+          {initials}
+        </div>
+        <div>
+          <h3 className="text-lg font-semibold text-gray-800">{name}</h3>
+          <p className="text-sm text-gray-500">{location}</p>
+        </div>
+      </div>
+
+      <p className="text-gray-700 flex-grow mb-6 leading-relaxed">“{quote}”</p>
+
+      <div className="flex">
+        {Array.from({ length: 5 }).map((_, i) => (
+          <Star key={i} className="w-5 h-5 text-yellow-400" />
+        ))}
+      </div>
+    </div>
+  );
+}
+
 export default function Testimonials() {
+  const testimonials = [
+    {
+      name: "John M.",
+      location: "Calgary",
+      quote:
+        "The team provided us with an amazing nurse who took great care of my father. We felt supported every step of the way.",
+    },
+    {
+      name: "Rita S.",
+      location: "Calgary",
+      quote:
+        "From the first call, their team was kind and responsive. I felt reassured knowing my family member was in good hands.",
+    },
+    {
+      name: "Care Facility Manager",
+      location: "Calgary",
+      quote:
+        "HFWG Support Care Services is our go-to for temporary staffing. They are responsive, flexible, and the staff they send is top-notch.",
+    },
+    {
+      name: "Harpreet K.",
+      location: "Calgary",
+      quote:
+        "Their application process was simple, and they matched me with the right employer within a week. Highly recommended!",
+    },
+  ];
   return (
     <div className="py-16 px-4 sm:px-8 md:px-12 lg:px-20">
       <div>
@@ -28,73 +87,22 @@ export default function Testimonials() {
             </div>
           </div>
           <h2 className="text-3xl md:text-4xl font-bold mt-2">
-            Our Process Simple & Effective
+            What Our Clients Say
           </h2>
           <p className="text-gray-600 mt-4 max-w-2xl mx-auto">
-            Next, we craft a tailored strategy to connect the right people with
-            the right roles. Our team leverages a comprehensive screening.
+            See how our reliable care and staffing services make a difference
+            for families and organizations across Calgary.
           </p>
         </div>
       </div>
-      <Swiper
-        slidesPerView={3}
-        spaceBetween={10}
-        autoplay={{ delay: 2000, disableOnInteraction: false }}
-        breakpoints={{
-          320: { slidesPerView: 1, spaceBetween: 30 },
-          640: { slidesPerView: 2, spaceBetween: 30 },
-          1024: { slidesPerView: 3, spaceBetween: 30 },
-        }}
-        modules={[Autoplay]}
-        className="w-4/5 mx-auto testimonials-swiper"
-      >
-        {testimonials.map((person, index) => (
-          <SwiperSlide key={index}>
-            <div className="text-sm w-full border border-gray-200 pb-6 pt-16 rounded-lg bg-white shadow-[0px_4px_15px_0px] shadow-black/5">
-              <div className="flex flex-col items-center px-5 py-4 relative">
-                <Image
-                  width={300}
-                  height={300}
-                  loading="lazy"
-                  className="h-24 w-24 absolute -top-14 rounded-full"
-                  src="/images/Aboutimg.png"
-                  alt={`userImage${index + 1}`}
-                />
-                <div className="pt-8 text-center">
-                  <h2 className="text-lg font-medium text-gray-800">
-                    {person.name}
-                  </h2>
-                  <p className="text-gray-800/80">{person.role}</p>
-                </div>
-              </div>
-              <p className="text-gray-500 px-6 text-center">
-                I have been using imagify for nearly two years, primarily for
-                Instagram, and it has been incredibly user-friendly, making my
-                work much easier.
-              </p>
-              <div className="flex justify-center pt-4">
-                <div className="flex gap-0.5">
-                  {[...Array(5)].map((_, i) => (
-                    <svg
-                      key={i}
-                      width="18"
-                      height="18"
-                      viewBox="0 0 22 20"
-                      fill="none"
-                      xmlns="http://www.w3.org/2000/svg"
-                    >
-                      <path
-                        d="M10.525.464a.5.5 0 0 1 .95 0l2.107 6.482a.5.5 0 0 0 .475.346h6.817a.5.5 0 0 1 .294.904l-5.515 4.007a.5.5 0 0 0-.181.559l2.106 6.483a.5.5 0 0 1-.77.559l-5.514-4.007a.5.5 0 0 0-.588 0l-5.514 4.007a.5.5 0 0 1-.77-.56l2.106-6.482a.5.5 0 0 0-.181-.56L.832 8.197a.5.5 0 0 1 .294-.904h6.817a.5.5 0 0 0 .475-.346z"
-                        fill="#FF532E"
-                      />
-                    </svg>
-                  ))}
-                </div>
-              </div>
-            </div>
-          </SwiperSlide>
-        ))}
-      </Swiper>
+
+      <section className="py-12">
+        <div className="grid gap-8 px-4 max-w-6xl mx-auto grid-cols-1 sm:grid-cols-2 lg:grid-cols-3">
+          {testimonials.map((t, idx) => (
+            <TestimonialCard key={idx} {...t} />
+          ))}
+        </div>
+      </section>
     </div>
   );
 }

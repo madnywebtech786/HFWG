@@ -6,28 +6,29 @@ export default function FAQsSection() {
   const [openIndex, setOpenIndex] = useState(null);
   const faqsData = [
     {
-      question: "What Lightning-Fast Performance means ?",
-      answer: "Built with speed — minimal load times and optimized rendering.",
+      question: "What types of professionals do you provide?",
+      answer:
+        "We offer a wide range of certified staff including Registered Nurses (RNs), Licensed Practical Nurses (LPNs), PSWs, HCAs, CNAs, general labourers, and cleaners.",
     },
     {
-      question: "What Fully Customizable Components means ?",
+      question: "How do I request staff for my facility or home care needs?",
       answer:
-        "Easily adjust styles, structure, and behavior to match your project needs.",
+        "Simply contact us through our website or call us directly. We’ll schedule a consultation to understand your needs and match you with the right professionals.",
     },
     {
-      question: "What Responsive by Default means ?",
+      question: "Are your caregivers and staff fully vetted?",
       answer:
-        "Every component are responsive by default — no extra CSS required.",
+        "Yes, all staff members undergo background checks, credential verification, and thorough screening to ensure quality and reliability.",
     },
     {
-      question: "What Tailwind CSS Powered means ?",
+      question: "Can I apply to work with HFWG Support Care Services?",
       answer:
-        "Built using Tailwind utility classes — no extra CSS or frameworks required.",
+        "Absolutely! Visit our “Eligibility Check & Application” section to see if you qualify, submit your form, and upload your documents.",
     },
     {
-      question: "What Dark Mode Support means ?",
+      question: "Do you serve areas outside Calgary?",
       answer:
-        "All components come ready with light and dark theme support out of the box.",
+        "Currently, we primarily serve Calgary and nearby communities. Please contact us to check if we cover your specific location.",
     },
   ];
   return (

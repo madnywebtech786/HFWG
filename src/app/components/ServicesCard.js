@@ -30,7 +30,7 @@ export default function ServicesCard({ service }) {
       }}
       aria-label={service.title}
     >
-      <div className="relative h-80 w-full">
+      <div className="relative h-72 w-full">
         <Image
           src={service.image}
           alt={service.title}
@@ -44,10 +44,16 @@ export default function ServicesCard({ service }) {
         {service.title}
       </h3>
       <p className="text-sm px-4 pb-4 text-gray-600">{service.description}</p>
-      <div>
-        <Link href={service.path} className="mb-6 flex gap-1 items-center px-5">
+      <div className="flex gap-5 px-4">
+        <Link href={service.path} className="mb-6 flex gap-1 items-center ">
           <p className="py-2 text-primary hover:cursor-pointer rounded-lg">
             Read More
+          </p>
+          <ArrowUpRight size={20} className="inline" color="green" />
+        </Link>
+          <Link href={service.contactPath} className="mb-6 flex gap-1 items-center ">
+          <p className="py-2 text-primary hover:cursor-pointer rounded-lg">
+            Apply Now
           </p>
           <ArrowUpRight size={20} className="inline" color="green" />
         </Link>

@@ -1,7 +1,9 @@
 "use client";
 import { ChevronDown } from "lucide-react";
 import Image from "next/image";
+import Link from "next/link";
 import React, { useEffect, useState } from "react";
+import TopBar from "../sections/TopBar";
 
 export default function Navbar() {
   const navLinks = [
@@ -12,14 +14,29 @@ export default function Navbar() {
       path: "/",
       dropdown: [
         { name: "Staffing Services", path: "/services/staffing-services" },
-        { name: "Registered Nurses (RNs)", path: "/services/rns" },
-        { name: "Licensed Practical Nurses (LPNs)", path: "/services/lpns" },
-        { name: "Certified Nursing Assistants (CNAs)", path: "/services/cnas" },
-        { name: "Health Care Aides (HCAs)", path: "/services/hcas" },
-        { name: "Personal Support Workers (PSW)", path: "/services/psw" },
+        {
+          name: "Registered Nurses (RNs)",
+          path: "/services/registered-nurses",
+        },
+        {
+          name: "Licensed Practical Nurses (LPNs)",
+          path: "/services/licensed-practical-nurses",
+        },
+        {
+          name: "Certified Nursing Assistants (CNAs)",
+          path: "/services/certified-nursing-assistants",
+        },
+        {
+          name: "Health Care Aides (HCAs)",
+          path: "/services/health-care-aides",
+        },
+        {
+          name: "Personal Support Workers (PSW)",
+          path: "/services/personal-support-workers",
+        },
         {
           name: "Specialized Care Providers",
-          path: "/services/specialized-care",
+          path: "/services/specialized-care-providers",
         },
         { name: "General Labourers", path: "/services/general-labourers" },
         { name: "Cleaners", path: "/services/cleaners" },
@@ -40,11 +57,18 @@ export default function Navbar() {
   }, []);
 
   return (
-    <div className="h-full mb-20">
+    <div
+      className={`${
+        isScrolled ? "fixed top-0" : "fixed top-0"
+      } z-50 transition-all duration-300   w-full ${
+        isScrolled ? " backdrop-blur-md" : " backdrop-blur-sm"
+      }`}
+    >
+      <TopBar isScrolled={isScrolled} />
       <nav
-        className={`fixed top-0 left-0 w-full flex items-center justify-between px-4 md:px-10 lg:px-20 transition-all duration-500 z-50 ${
+        className={` w-full flex items-center justify-between px-4 md:px-10 lg:px-20 transition-all duration-500 z-50 ${
           isScrolled
-            ? "bg-primary-gradient shadow-md backdrop-blur-lg py-3"
+            ? "bg-white shadow-md backdrop-blur-lg py-3"
             : "bg-primary-gradient py-3"
         }`}
       >
@@ -62,7 +86,12 @@ export default function Navbar() {
           {navLinks.map((link, idx) => {
             if (link.dropdown) {
               return (
-                <div key={idx} className="relative group">
+                <div
+                  key={idx}
+                  className={`relative group ${
+                    isScrolled ? "text-primary" : "text-white"
+                  } `}
+                >
                   <a
                     href={link.path}
                     className="cursor-pointer flex gap-3 items-center"
@@ -88,7 +117,11 @@ export default function Navbar() {
               );
             }
             return (
-              <a key={idx} href={link.path} className="cursor-pointer">
+              <a
+                key={idx}
+                href={link.path}
+                className={`cursor-pointer ${isScrolled ? "text-primary" : ""}`}
+              >
                 {link.name}
               </a>
             );
@@ -97,16 +130,32 @@ export default function Navbar() {
 
         {/* Desktop Buttons */}
         <div className="hidden lg:flex items-center gap-2">
-          <button className="px-3 py-2 rounded-xl text-sm text-green-700 hover:scale-95 font-semibold transition-all duration-200 bg-white">
-            Call us Now
-          </button>
-          <button className="px-3 py-2 rounded-xl text-sm text-green-700 hover:scale-95 font-semibold transition-all duration-200 bg-white">
-            Take Action
-          </button>
+          <Link href={"/contact"}>
+            <button
+              className={`cursor-pointer px-3 py-2 rounded-xl text-sm text-green-700 hover:scale-95 font-semibold transition-all duration-200  ${
+                isScrolled ? "bg-primary-gradient text-white" : "bg-white"
+              }`}
+            >
+              Apply Now
+            </button>
+          </Link>
+          <Link href={"/contact?role=employer"}>
+            <button
+              className={`cursor-pointer px-3 py-2 rounded-xl text-sm text-green-700 hover:scale-95 font-semibold transition-all duration-200  ${
+                isScrolled ? "bg-primary-gradient text-white" : "bg-white"
+              }`}
+            >
+              Hire Now
+            </button>
+          </Link>
         </div>
 
         {/* Mobile Toggle */}
-        <div className="flex items-center gap-3 lg:hidden text-white">
+        <div
+          className={`flex items-center gap-3 lg:hidden ${
+            isScrolled ? "text-primary" : "text-white"
+          } `}
+        >
           <svg
             onClick={() => setIsMenuOpen(!isMenuOpen)}
             className="h-6 w-6 cursor-pointer"

@@ -7,7 +7,7 @@ const WhyChooseUs = () => {
       <div className="w-full lg:w-1/2 relative featureSide">
         <Image
           loading="lazy"
-          src="/images/Aboutimg.png"
+          src="/images/why-choose-us.webp"
           alt="Mechanic Working"
           width={600}
           height={400}
@@ -31,14 +31,34 @@ const WhyChooseUs = () => {
               className="bg-primary p-2 rounded-lg"
             />
             <div>
-              <h3 className="text-lg font-semibold">Trusted & Quality Work</h3>
+              <h3 className="text-lg font-semibold">
+                Locally Owned & Operated in Calgary
+              </h3>
               <p className="text-gray-400">
-                Our expert technicians provide reliable, high-quality service to
-                ensure your vehicle runs at its best
+                We understand the unique needs of our Calgary community and
+                proudly serve with a local touch.
               </p>
             </div>
           </div>
           <div className="ml-10 flex items-start gap-4">
+            <Image
+              src="/images/icons/Trusted.svg"
+              alt="Icon"
+              width={50}
+              height={50}
+              className="bg-primary p-2 rounded-lg"
+            />
+            <div>
+              <h3 className="text-lg font-semibold">
+                Trusted Healthcare & Staffing Experts
+              </h3>
+              <p className="text-gray-400">
+                Our certified team delivers professional, compassionate care and
+                reliable staffing for healthcare and support roles.
+              </p>
+            </div>
+          </div>
+          <div className="ml-20 flex items-start gap-4">
             <Image
               src="/images/icons/Fast Service.svg"
               alt="Icon"
@@ -47,26 +67,12 @@ const WhyChooseUs = () => {
               className="bg-primary p-2 rounded-lg"
             />
             <div>
-              <h3 className="text-lg font-semibold">Fast Service Delivery</h3>
+              <h3 className="text-lg font-semibold">
+                Fast, Flexible, and Dependable Service
+              </h3>
               <p className="text-gray-400">
-                We prioritize efficiency, offering quick turnaround times to get
-                you back on the road with minimal wait.
-              </p>
-            </div>
-          </div>
-          <div className="ml-20 flex items-start gap-4">
-            <Image
-              src="/images/icons/Money Back.svg"
-              alt="Icon"
-              width={50}
-              height={50}
-              className="bg-primary p-2 rounded-lg"
-            />
-            <div>
-              <h3 className="text-lg font-semibold">Expert Solutions</h3>
-              <p className="text-gray-400">
-                We use cutting-edge technology to diagnose and fix any issue
-                efficiently.
+                We respond quickly to your needs with flexible scheduling and
+                consistent, high-quality support.
               </p>
             </div>
           </div>

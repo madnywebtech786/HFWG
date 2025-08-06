@@ -3,10 +3,11 @@ import React from "react";
 import "swiper/css";
 import { Swiper, SwiperSlide } from "swiper/react";
 import { Autoplay } from "swiper/modules";
+import Link from "next/link";
 
 export default function HeroSection() {
   return (
-    <div className="lg:min-h-screen flex items-center">
+    <div className="lg:min-h-screen flex items-center pt-32">
       <Swiper
         slidesPerView={1}
         spaceBetween={10}
@@ -19,31 +20,20 @@ export default function HeroSection() {
           <div className="flex h-auto lg:h-screen slide1Bg">
             <div className="w-11/12 lg:w-8/12 slideContentSide bg-primary/90 text-white h-full p-4 py-16 lg:p-20 flex items-center">
               <div className="w-11/12 lg:w-4/5 flex flex-col gap-5 lg:gap-6">
-                <p className="text-xs lg:text-sm">
-                  Empower your team with top-tier staffing solutions, carefully
-                  matched to your exact needs and industry standards. Empower
-                  your team with top-tier staffing solutions, carefully matched
-                  to your exact needs and industry standards.
-                </p>
-                <h2 className="text-4xl md:text-5xl lg:text-7xl font-semibold">
-                  Premier Healthcare Staffing
+                <h2 className="text-3xl md:text-5xl xl:text-6xl font-semibold">
+                  Professional Care You Can Trust
                 </h2>
-                <p className="text-sm lg:text-base">
-                  Our comprehensive staffing solutions connect you with
-                  Registered Nurses, Licensed Practical Nurses, Personal Support
-                  Workers, and Health Care Aides who uphold the highest
-                  standards. Every candidate is rigorously screened,
-                  credentialed, and continuously trained to deliver
-                  compassionate, competent care and support critical operations
-                  in any healthcare setting.
+                <p className="text-sm lg:text-lg">
+                  We offer compassionate healthcare, personal support, and home
+                  care services tailored to each client's needs with dignity and
+                  respect at the core of everything we do.
                 </p>
                 <div className="flex gap-4">
-                  <button className="text-sm md:text-base p-2 px-4 lg:p-3 lg:px-6 text-primary bg-white rounded-2xl font-semibold cursor-pointer">
-                    Explore Staffing
-                  </button>
-                  <button className="text-sm md:text-base p-2 px-4 lg:p-3 lg:px-6 text-primary bg-white rounded-2xl font-semibold cursor-pointer">
-                    Contact Recruitment
-                  </button>
+                  <Link href={"/contact"}>
+                    <button className="text-sm md:text-base p-2 px-4 lg:p-3 lg:px-6 text-primary bg-white rounded-2xl font-semibold cursor-pointer">
+                      Get Support Now
+                    </button>
+                  </Link>
                 </div>
               </div>
             </div>
@@ -56,30 +46,20 @@ export default function HeroSection() {
           <div className="flex h-auto lg:h-screen slide2Bg">
             <div className="w-11/12 lg:w-8/12 slideContentSide bg-primary/90 text-white h-full p-4 py-16 lg:p-20 flex items-center">
               <div className="w-11/12 lg:w-4/5 flex flex-col gap-5 lg:gap-6">
-                <p className="text-xs lg:text-sm">
-                  Advanced workforce management solutions keep your facility
-                  running smoothly and compliantly at all times.Advanced
-                  workforce management solutions keep your facility running
-                  smoothly and compliantly at all times.
-                </p>
-                <h2 className="text-4xl md:text-5xl lg:text-7xl font-semibold">
-                  Workforce Management Technology
+                <h2 className="text-3xl md:text-5xl xl:text-6xl font-semibold">
+                  Join a Team That Cares
                 </h2>
-                <p className="text-sm lg:text-base">
-                  Our cloud-native scheduling platform automates shift
-                  assignments, time tracking, and compliance
-                  reporting eliminating spreadsheets and guesswork. Real-time
-                  notifications, credential monitoring, and performance
-                  analytics help you optimize staffing levels, reduce costs, and
-                  improve caregiver satisfaction across all care environments.
+                <p className="text-sm lg:text-lg">
+                  Whether you're a certified healthcare professional or seeking
+                  general labour work, we have rewarding opportunities waiting
+                  for you.
                 </p>
                 <div className="flex gap-4">
-                  <button className="text-sm md:text-base p-2 px-4 lg:p-3 lg:px-6 text-primary bg-white rounded-2xl font-semibold cursor-pointer">
-                    See Demo
-                  </button>
-                  <button className="text-sm md:text-base p-2 px-4 lg:p-3 lg:px-6 text-primary bg-white rounded-2xl font-semibold cursor-pointer">
-                    Request Access
-                  </button>
+                  <Link href={"/contact"}>
+                    <button className="text-sm md:text-base p-2 px-4 lg:p-3 lg:px-6 text-primary bg-white rounded-2xl font-semibold cursor-pointer">
+                      Apply for a Job
+                    </button>
+                  </Link>
                 </div>
               </div>
             </div>
@@ -92,30 +72,46 @@ export default function HeroSection() {
           <div className="flex h-auto lg:h-screen slide3Bg">
             <div className="w-11/12 lg:w-8/12 slideContentSide bg-primary/90 text-white h-full p-4 py-16 lg:p-20 flex items-center">
               <div className="w-11/12 lg:w-4/5 flex flex-col gap-5 lg:gap-6">
-                <p className="text-xs lg:text-sm">
-                  Expert consulting services to optimize your staffing
-                  strategies and maximize ROI in every department.Expert
-                  consulting services to optimize your staffing strategies and
-                  maximize ROI in every department.
-                </p>
-                <h2 className="text-4xl md:text-5xl lg:text-7xl font-semibold">
-                  Strategic Staffing Consulting
+                <h2 className="text-3xl md:text-5xl xl:text-6xl font-semibold">
+                  Reliable Staffing Solutions for Your Business
                 </h2>
-                <p className="text-sm lg:text-base">
-                  Partner with our seasoned advisors to assess your workforce
-                  needs, design tailored staffing models, and implement
-                  continuous improvement processes. From market analysis to
-                  talent development programs, we provide end-to-end guidance to
-                  help you achieve operational excellence and sustainable
-                  growth.
+                <p className="text-sm lg:text-lg">
+                  From healthcare assistants to general labourers, we connect
+                  employers with skilled, dependable workers fast and
+                  hassle-free.
                 </p>
                 <div className="flex gap-4">
-                  <button className="text-sm md:text-base p-2 px-4 lg:p-3 lg:px-6 text-primary bg-white rounded-2xl font-semibold cursor-pointer">
-                    Learn More
-                  </button>
-                  <button className="text-sm md:text-base p-2 px-4 lg:p-3 lg:px-6 text-primary bg-white rounded-2xl font-semibold cursor-pointer">
-                    Schedule Consultation
-                  </button>
+                  <Link href={"/contact?type=employer"}>
+                    <button className="text-sm md:text-base p-2 px-4 lg:p-3 lg:px-6 text-primary bg-white rounded-2xl font-semibold cursor-pointer">
+                      Hire Staff Today
+                    </button>
+                  </Link>
+                </div>
+              </div>
+            </div>
+            <div className="w-1/12 lg:w-4/12"></div>
+          </div>
+        </SwiperSlide>
+
+        {/* Slide 4 */}
+        <SwiperSlide>
+          <div className="flex h-auto lg:h-screen slide4Bg">
+            <div className="w-11/12 lg:w-8/12 slideContentSide bg-primary/90 text-white h-full p-4 py-16 lg:p-20 flex items-center">
+              <div className="w-11/12 lg:w-4/5 flex flex-col gap-5 lg:gap-6">
+                <h2 className="text-3xl md:text-5xl xl:text-6xl font-semibold">
+                  Excellence in Every Service We Provide
+                </h2>
+                <p className="text-sm lg:text-lg">
+                  At HFWG, we’re more than a service provider we’re a dedicated
+                  partner in your well-being and success, committed to
+                  empowering lives through care and opportunity.
+                </p>
+                <div className="flex gap-4">
+                  <Link href={"/about-us"}>
+                    <button className="text-sm md:text-base p-2 px-4 lg:p-3 lg:px-6 text-primary bg-white rounded-2xl font-semibold cursor-pointer">
+                      Learn More About Us
+                    </button>
+                  </Link>
                 </div>
               </div>
             </div>
