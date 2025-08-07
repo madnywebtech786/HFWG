@@ -1,4 +1,3 @@
-"use client";
 import React, { Suspense } from "react";
 import Breadcrumb from "../components/Breadcrumb";
 import ContactUs from "../sections/ContactUs";
