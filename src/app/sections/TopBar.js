@@ -5,18 +5,18 @@ const TopBar = () => (
     <div className="w-full p-4 md:px-8 lg:px-12 2xl:px-20 flex flex-wrap justify-between items-center">
       <div className="flex space-x-6">
         <a
-          href="mailto:hfwg@gmail.com"
+          href="mailto:hfwg2025@gmail.com"
           className="flex items-center hover:text-primary transition-colors"
         >
           <Mail className="h-4 w-4 mr-1" />
-          hfwg@gmail.com
+          hfwg2025@gmail.com
         </a>
         <a
-          href="tel:+14038521114"
+          href="tel:+15876209927"
           className="flex items-center hover:text-primary transition-colors"
         >
           <Phone className="h-4 w-4 mr-1" />
-          (403) 852-1114
+          587-620-9927
         </a>
       </div>
       <div className="hidden lg:flex space-x-4 mt-2 md:mt-0 ">

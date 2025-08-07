@@ -7,7 +7,17 @@ export default function ContactUs() {
   const params = useSearchParams();
   const servicenameParam = params.get("service") || "";
   const roleParam = params.get("role") || "employee";
-
+  const [successMessage, setSuccessMessage] = useState("");
+  useEffect(() => {
+    if (successMessage) {
+      const reset = () => setSuccessMessage("");
+      document
+        .querySelector("form")
+        .addEventListener("input", reset, { once: true });
+      return () =>
+        document.querySelector("form")?.removeEventListener("input", reset);
+    }
+  }, [successMessage]);
   const services = {
     "staffing-services": "Staffing Services",
     "registered-nurses": "Registered Nurses (RNs)",
@@ -24,7 +34,7 @@ export default function ContactUs() {
     name: "",
     phone: "",
     email: "",
-    service: services[servicenameParam],
+    service: services[servicenameParam] || "Staffing Services",
     message: "",
     role: roleParam,
     company: "",
@@ -33,7 +43,7 @@ export default function ContactUs() {
   });
   const [files, setFiles] = useState([]);
   const [submitting, setSubmitting] = useState(false);
-  const [error, setError] = useState("");
+  const [errors, setErrors] = useState("");
 
   // Pre-select service from query
   useEffect(() => {
@@ -55,7 +65,22 @@ export default function ContactUs() {
   };
 
   const handleFileUpload = (e) => {
-    setFiles(Array.from(e.target.files));
+    const picked = Array.from(e.target.files);
+    // append new files to existing ones
+    setFiles((prev) => {
+      // optional: filter out duplicates by name+size
+      const all = [...prev, ...picked];
+      const uniq = Array.from(
+        all
+          .reduce((map, f) => {
+            const key = f.name + f.size;
+            if (!map.has(key)) map.set(key, f);
+            return map;
+          }, new Map())
+          .values()
+      );
+      return uniq;
+    });
   };
 
   const handleDragOver = (e) => {
@@ -64,12 +89,58 @@ export default function ContactUs() {
 
   const handleDrop = (e) => {
     e.preventDefault();
-    setFiles(Array.from(e.dataTransfer.files));
+    const dropped = Array.from(e.dataTransfer.files);
+    setFiles((prev) => {
+      const all = [...prev, ...dropped];
+      const uniq = Array.from(
+        all
+          .reduce((map, f) => {
+            const key = f.name + f.size;
+            if (!map.has(key)) map.set(key, f);
+            return map;
+          }, new Map())
+          .values()
+      );
+      return uniq;
+    });
+  };
+
+  const validate = () => {
+    const errs = {};
+    if (!formData.name.trim()) errs.name = "Full name is required.";
+    if (!formData.phone.trim()) errs.phone = "Phone number is required.";
+    if (!formData.email.trim()) {
+      errs.email = "Email is required.";
+    } else if (!/^\S+@\S+\.\S+$/.test(formData.email)) {
+      errs.email = "Enter a valid email address.";
+    }
+    if (!formData.role) errs.role = "Please select employee or employer.";
+    if (formData.role === "employer") {
+      if (!formData.company.trim()) errs.company = "Company is required.";
+      if (!formData.address.trim()) errs.address = "Address is required.";
+      if (!formData.hiringPosition.trim())
+        errs.hiringPosition = "Position is required.";
+    }
+    if (!formData.service) errs.service = "Please select a service.";
+    if (!formData.message.trim()) errs.message = "Message cannot be empty.";
+    if (files.length === 0)
+      errs.attachments = "At least one attachment is required.";
+    return errs;
   };
 
   const handleSubmit = async (e) => {
     e.preventDefault();
-    setError("");
+    console.log("inside");
+    setErrors("");
+    setSuccessMessage("");
+    const validationErrors = validate();
+    console.log("v", validationErrors);
+
+    if (Object.keys(validationErrors).length) {
+      setErrors(validationErrors);
+      return;
+    }
+    setErrors({});
     setSubmitting(true);
 
     try {
@@ -77,15 +148,11 @@ export default function ContactUs() {
       Object.entries(formData).forEach(([key, val]) => data.append(key, val));
       files.forEach((file) => data.append("attachments", file));
 
-      const res = await fetch("/api/contact", {
-        method: "POST",
-        body: data,
-      });
-
+      const res = await fetch("/api/contact", { method: "POST", body: data });
       const result = await res.json();
       if (!res.ok) throw new Error(result.error || "Submission failed");
 
-      // success: clear form
+      setSuccessMessage("Your message has been sent successfully!");
       setFormData({
         name: "",
         phone: "",
@@ -99,12 +166,14 @@ export default function ContactUs() {
       });
       setFiles([]);
     } catch (err) {
-      setError(err.message);
+      setErrors((prev) => ({
+        ...prev,
+        response: "Something went wrong. Try again…",
+      }));
     } finally {
       setSubmitting(false);
     }
   };
-
   const servicesOptions = [
     "Staffing Services",
     "Registered Nurses (RNs)",
@@ -153,9 +222,11 @@ export default function ContactUs() {
               value={formData.name}
               onChange={handleInputChange}
               placeholder="John Doe"
-              required
               className="w-full border border-primary text-primary placeholder:text-primary rounded-lg px-2 py-2 focus:outline-none focus:ring-2 focus:ring-primary/50 focus:border-primary transition-colors"
             />
+            {errors.name && (
+              <p className="text-red-500 text-sm">{errors.name}</p>
+            )}
           </div>
           <div className="w-full">
             <label className="block text-sm font-medium text-primary mb-2">
@@ -167,9 +238,11 @@ export default function ContactUs() {
               value={formData.phone}
               onChange={handleInputChange}
               placeholder="+1 (555) 123-4567"
-              required
               className="w-full border border-primary text-primary placeholder:text-primary rounded-lg px-2 py-2 focus:outline-none focus:ring-2 focus:ring-primary/50 focus:border-primary transition-colors"
             />
+            {errors.phone && (
+              <p className="text-red-500 text-sm">{errors.phone}</p>
+            )}
           </div>
         </div>
 
@@ -184,9 +257,11 @@ export default function ContactUs() {
             value={formData.email}
             onChange={handleInputChange}
             placeholder="user@example.com"
-            required
             className="w-full border border-primary text-primary placeholder:text-primary rounded-lg px-2 py-2 focus:outline-none focus:ring-2 focus:ring-primary/50 focus:border-primary transition-colors"
           />
+          {errors.email && (
+            <p className="text-red-500 text-sm">{errors.email}</p>
+          )}
         </div>
 
         {/* Role Radio */}
@@ -224,9 +299,11 @@ export default function ContactUs() {
                 value={formData.company}
                 onChange={handleInputChange}
                 placeholder="Your Company Name"
-                required
                 className="w-full border border-primary text-primary placeholder:text-primary rounded-lg px-2 py-2 focus:outline-none focus:ring-2 focus:ring-primary/50 focus:border-primary transition-colors"
               />
+              {errors.company && (
+                <p className="text-red-500 text-sm">{errors.company}</p>
+              )}
             </div>
             <div>
               <label className="block text-sm font-medium text-primary mb-2">
@@ -238,9 +315,11 @@ export default function ContactUs() {
                 value={formData.address}
                 onChange={handleInputChange}
                 placeholder="Company Address"
-                required
                 className="w-full border border-primary text-primary placeholder:text-primary rounded-lg px-2 py-2 focus:outline-none focus:ring-2 focus:ring-primary/50 focus:border-primary transition-colors"
               />
+              {errors.address && (
+                <p className="text-red-500 text-sm">{errors.address}</p>
+              )}
             </div>
             <div>
               <label className="block text-sm font-medium text-primary mb-2">
@@ -252,9 +331,11 @@ export default function ContactUs() {
                 value={formData.hiringPosition}
                 onChange={handleInputChange}
                 placeholder="Position Title"
-                required
                 className="w-full border border-primary text-primary placeholder:text-primary rounded-lg px-2 py-2 focus:outline-none focus:ring-2 focus:ring-primary/50 focus:border-primary transition-colors"
               />
+              {errors.hiringPosition && (
+                <p className="text-red-500 text-sm">{errors.hiringPosition}</p>
+              )}
             </div>
           </>
         )}
@@ -268,7 +349,6 @@ export default function ContactUs() {
             name="service"
             value={formData.service}
             onChange={handleInputChange}
-            required
             className="w-full border border-primary text-primary rounded-lg px-2 py-2 focus:outline-none focus:ring-2 focus:ring-primary/50 focus:border-primary transition-colors appearance-none bg-no-repeat bg-[right_1rem_center] pr-10"
             style={{
               backgroundImage:
@@ -297,9 +377,11 @@ export default function ContactUs() {
             onChange={handleInputChange}
             rows="3"
             placeholder="Tell us about your needs..."
-            required
             className="w-full border border-primary text-primary placeholder:text-primary rounded-lg px-2 py-2 focus:outline-none focus:ring-2 focus:ring-primary/50 focus:border-primary transition-colors"
           />
+          {errors.message && (
+            <p className="text-red-500 text-sm">{errors.message}</p>
+          )}
         </div>
 
         {/* Attachment */}
@@ -318,7 +400,7 @@ export default function ContactUs() {
               id="file-upload"
               accept=".pdf,.jpg,.jpeg,.png"
               multiple
-              required
+              name="attachments"
               className="hidden"
               onChange={handleFileUpload}
             />
@@ -333,17 +415,38 @@ export default function ContactUs() {
               </p>
             </div>
           </div>
+
+          {/* show list of selected files */}
+          {files.length > 0 && (
+            <ul className="mt-2 space-y-1 text-sm text-gray-700">
+              {files.map((f, i) => (
+                <li key={i} className="flex items-center gap-2">
+                  <FileText className="h-4 w-4 text-primary" />
+                  <span>{f.name}</span>
+                </li>
+              ))}
+            </ul>
+          )}
+
           <p className="text-xs text-gray-500 mt-2">
             * File attachment is required for processing
           </p>
         </div>
+        {errors.attachments && (
+          <p className="text-red-500 text-sm">{errors.attachments}</p>
+        )}
 
-        {error && <p className="text-red-500">{error}</p>}
+        {successMessage && (
+          <div className="mb-6 p-4 bg-green-100 border border-green-400 text-green-700 rounded-lg">
+            {successMessage}
+          </div>
+        )}
+        {errors.response && <p className="text-red-500">{errors.response}</p>}
 
         <button
           type="submit"
           disabled={submitting}
-          className="w-full bg-primary text-white font-bold py-3 px-4 rounded-xl transition-all disabled:opacity-50"
+          className="cursor-pointer w-full bg-primary text-white font-bold py-3 px-4 rounded-xl transition-all disabled:opacity-50"
         >
           {submitting ? "Submitting..." : "Submit Request"}
         </button>
