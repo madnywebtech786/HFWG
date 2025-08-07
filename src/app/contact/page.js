@@ -1,3 +1,4 @@
+'use client'
 import React from "react";
 import Breadcrumb from "../components/Breadcrumb";
 import ContactUs from "../sections/ContactUs";
