@@ -4,6 +4,7 @@ import { useParams } from "next/navigation";
 import { CheckCircle2 } from "lucide-react";
 import Breadcrumb from "@/app/components/Breadcrumb";
 import Image from "next/image";
+import Head from "next/head";
 
 const serviceData = {
   "staffing-services": {
@@ -239,8 +240,27 @@ export default function ServicePage() {
     return <p className="p-8 text-red-600">Service not found.</p>;
   }
 
+  const pageUrl = `https://hfwg-support-care.example.com/services/${service.slug}`;
+
   return (
     <>
+      <Head>
+        <title>{service.title}</title>
+        <meta name="description" content={service.description} />
+        <meta
+          name="keywords"
+          content="HFWG, support care, Calgary, staffing, healthcare, nursing, LPN, CNA, HCA, PSW"
+        />
+        <meta property="og:title" content={service.title} />
+        <meta property="og:description" content={service.description} />
+        <meta property="og:image" content={service.image} />
+        <meta property="og:url" content={pageUrl} />
+        <meta property="og:type" content="website" />
+        <meta name="twitter:card" content="summary_large_image" />
+        <meta name="twitter:title" content={service.title} />
+        <meta name="twitter:description" content={service.description} />
+        <meta name="twitter:image" content={service.image} />
+      </Head>
       <Breadcrumb name={service.title} />
       <div className="p-6 md:p-8 lg:p-12 2xl:p-20 space-y-12">
         {/* Hero Section */}
