@@ -1,3 +1,5 @@
+import React, { Suspense } from "react";
+
 import AboutSection from "./sections/AboutSection";
 import ContactUs from "./sections/ContactUs";
 import FAQsSection from "./sections/FAQsSection";
@@ -11,13 +13,19 @@ export default function Home() {
   return (
     <div>
       <HeroSection />
-       <AboutSection/>
-       <ServicesSection/>
-       <WhyChooseUs />
-       <ProcessPage/>
-       <Testimonials/>
-       <FAQsSection/>
-       <ContactUs />
+      <AboutSection />
+      <ServicesSection />
+      <WhyChooseUs />
+      <ProcessPage />
+      <Testimonials />
+      <FAQsSection />
+      <Suspense
+        fallback={
+          <div className="py-16 text-center">Loading contact form…</div>
+        }
+      >
+        <ContactUs />
+      </Suspense>{" "}
     </div>
   );
 }
