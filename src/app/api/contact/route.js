@@ -47,12 +47,10 @@ export async function POST(request) {
       });
     }
   }
-  console.log('user',process.env.GMAIL_USER)
-  console.log('pass',process.env.GMAIL_PASS)
 
   // Nodemailer transporter (Gmail)
   const transporter = nodemailer.createTransport({
-    service: "gmail",
+    service: "Gmail",
     auth: {
       user: process.env.GMAIL_USER,
       pass: process.env.GMAIL_PASS,
@@ -120,7 +118,7 @@ let html = `
   try {
     await transporter.sendMail({
       from: `"Website Contact" <${process.env.GMAIL_USER}>`,
-      to: "fahadjawad596@gmail.com",
+      to: "hfwg2025@gmail.com",
       subject: `New contact from ${name}`,
       html,
       attachments,
