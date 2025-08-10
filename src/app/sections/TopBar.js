@@ -12,11 +12,11 @@ const TopBar = () => (
           hfwg2025@gmail.com
         </a>
         <a
-          href="tel:+15876209927"
+          href="tel:+15877003395"
           className="flex items-center hover:text-primary transition-colors"
         >
           <Phone className="h-4 w-4 mr-1" />
-          587-620-9927
+          587-700-3395
         </a>
       </div>
       <div className="hidden lg:flex space-x-4 mt-2 md:mt-0 ">
