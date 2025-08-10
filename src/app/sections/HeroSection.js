@@ -17,8 +17,8 @@ export default function HeroSection() {
       >
         {/* Slide 1 */}
         <SwiperSlide>
-          <div className="flex h-auto lg:h-screen slide1Bg">
-            <div className="w-11/12 lg:w-8/12 slideContentSide bg-primary/90 text-white h-full p-4 py-16 lg:p-20 flex items-center">
+          <div className="flex h-auto lg:h-screen slide1Bg ">
+            <div className="min-h-[380px] w-11/12 lg:w-8/12 slideContentSide bg-primary/90 text-white h-full p-4 py-16 lg:p-20 flex items-center">
               <div className="w-11/12 lg:w-4/5 flex flex-col gap-5 lg:gap-6">
                 <h2 className="text-3xl md:text-5xl xl:text-6xl font-semibold">
                   Professional Care You Can Trust
@@ -43,8 +43,8 @@ export default function HeroSection() {
 
         {/* Slide 2 */}
         <SwiperSlide>
-          <div className="flex h-auto lg:h-screen slide2Bg">
-            <div className="w-11/12 lg:w-8/12 slideContentSide bg-primary/90 text-white h-full p-4 py-16 lg:p-20 flex items-center">
+          <div className="flex h-auto lg:h-screen slide2Bg ">
+            <div className="min-h-[380px] w-11/12 lg:w-8/12 slideContentSide bg-primary/90 text-white h-full p-4 py-16 lg:p-20 flex items-center">
               <div className="w-11/12 lg:w-4/5 flex flex-col gap-5 lg:gap-6">
                 <h2 className="text-3xl md:text-5xl xl:text-6xl font-semibold">
                   Join a Team That Cares
@@ -69,8 +69,8 @@ export default function HeroSection() {
 
         {/* Slide 3 */}
         <SwiperSlide>
-          <div className="flex h-auto lg:h-screen slide3Bg">
-            <div className="w-11/12 lg:w-8/12 slideContentSide bg-primary/90 text-white h-full p-4 py-16 lg:p-20 flex items-center">
+          <div className="flex h-auto lg:h-screen slide3Bg ">
+            <div className="min-h-[380px] w-11/12 lg:w-8/12 slideContentSide bg-primary/90 text-white h-full p-4 py-16 lg:p-20 flex items-center">
               <div className="w-11/12 lg:w-4/5 flex flex-col gap-5 lg:gap-6">
                 <h2 className="text-3xl md:text-5xl xl:text-6xl font-semibold">
                   Reliable Staffing Solutions for Your Business
@@ -95,8 +95,8 @@ export default function HeroSection() {
 
         {/* Slide 4 */}
         <SwiperSlide>
-          <div className="flex h-auto lg:h-screen slide4Bg">
-            <div className="w-11/12 lg:w-8/12 slideContentSide bg-primary/90 text-white h-full p-4 py-16 lg:p-20 flex items-center">
+          <div className="flex h-auto lg:h-screen slide4Bg ">
+            <div className="min-h-[380px] w-11/12 lg:w-8/12 slideContentSide bg-primary/90 text-white h-full p-4 py-16 lg:p-20 flex items-center">
               <div className="w-11/12 lg:w-4/5 flex flex-col gap-5 lg:gap-6">
                 <h2 className="text-3xl md:text-5xl xl:text-6xl font-semibold">
                   Excellence in Every Service We Provide
